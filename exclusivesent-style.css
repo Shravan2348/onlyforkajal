@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exclusive Messages for Her</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Global styles */
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 40px;
+      color: #ff66b2;
+      text-align: center;
+      margin-top: 30px;
+    }
+    
+    .container {
+      width: 80%;
+      max-width: 900px;
+      margin: 30px auto;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      box-sizing: border-box;
+    }
+
+    /* Styling for message boxes */
+    .message-box {
+      background-color: #fce4ec;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .message-box:hover {
+      transform: translateY(-5px);
+    }
+
+    .message-box h3 {
+      font-size: 22px;
+      font-weight: bold;
+      color: #ff66b2;
+      margin: 0;
+    }
+
+    .message-box p {
+      font-size: 18px;
+      margin: 10px 0;
+      color: #333;
+    }
+
+    .gift-type {
+      font-weight: bold;
+      color: #ff3366;
+      font-size: 16px;
+    }
+
+    /* Button to refresh the page */
+    .refresh-button {
+      display: block;
+      margin: 20px auto;
+      padding: 12px 25px;
+      background-color: #ff66b2;
+      color: white;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .refresh-button:hover {
+      background-color: #e55a9e;
+    }
+
+  </style>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCUUzZBp8JFm4iPvJRcQyVtiXoXGw5uIws",
+      authDomain: "website-for-her.firebaseapp.com",
+      projectId: "website-for-her",
+      storageBucket: "website-for-her.appspot.com",
+      messagingSenderId: "222084545714",
+      appId: "1:222084545714:web:3e1fec18a077db5980ddab"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    // Fetch and display messages and gifts
+    async function fetchMessages() {
+      const querySnapshot = await getDocs(collection(db, "gifts"));
+      const container = document.getElementById("messagesContainer");
+
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        const messageBox = document.createElement("div");
+        messageBox.classList.add("message-box");
+
+        const userName = document.createElement("h3");
+        userName.textContent = `From: ${data.name}`;
+
+        const giftType = document.createElement("p");
+        giftType.classList.add("gift-type");
+        giftType.textContent = `Gift: ${data.giftType || "None"}`;
+
+        const message = document.createElement("p");
+        message.textContent = `Message: ${data.message}`;
+
+        messageBox.appendChild(userName);
+        messageBox.appendChild(giftType);
+        messageBox.appendChild(message);
+
+        container.appendChild(messageBox);
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      fetchMessages();
+    });
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Exclusive Messages for Her 💖</h1>
+    <div id="messagesContainer"></div>
+    <button class="refresh-button" onclick="window.location.reload()">Refresh Messages</button>
+  </div>
+</body>
+</html>
