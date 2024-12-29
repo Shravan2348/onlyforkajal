@@ -1,0 +1,147 @@
+/* General Styling */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #fad0c4; /* Soft pastel pink background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    position: relative; /* To allow absolute positioning of hearts */
+}
+
+.container {
+    text-align: center;
+    background: #f7d3d6; /* Slightly lighter pastel pink to match the background */
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+h1 {
+    font-family: 'Allura', cursive;
+    font-size: 2.8rem;
+    color: #ff8ba7; /* Soft pink */
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+/* Long Message Styling with a More Elegant Font */
+.messages {
+    font-size: 1.6rem;
+    font-family: 'Dancing Script', cursive; /* Elegant cursive font */
+    color: #333;
+    margin-bottom: 30px;
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+.messages p {
+    margin: 15px 0;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* Fade-in effect with delay for dynamic display */
+.fade-in {
+    animation: fadeIn 1s forwards;
+}
+
+.delay1 {
+    animation-delay: 0.5s;
+}
+
+.delay2 {
+    animation-delay: 1s;
+}
+
+.delay3 {
+    animation-delay: 1.5s;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.navigation {
+    margin-bottom: 30px;
+}
+
+.nav-btn {
+    padding: 15px 30px;
+    margin: 10px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #ff8ba7; /* Soft pink */
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+footer {
+    font-size: 1.2rem;
+    color: #ff8ba7; /* Soft pink */
+    font-family: 'Poppins', sans-serif;
+    margin-top: 30px;
+}
+
+footer p {
+    font-weight: 600;
+}
+
+/* Heart Shapes (If you still want hearts, uncomment this) */
+.heart {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: red;
+    transform: rotate(45deg);
+    opacity: 0.2;
+    animation: float 4s ease-in-out infinite;
+}
+
+.heart::before,
+.heart::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: red;
+    border-radius: 50%;
+}
+
+.heart::before {
+    left: 15px;
+}
+
+.heart::after {
+    top: 15px;
+}
+
+/* Floating Hearts Animation */
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(45deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(45deg);
+    }
+    100% {
+        transform: translateY(0) rotate(45deg);
+    }
+}
