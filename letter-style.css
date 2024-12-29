@@ -1,0 +1,101 @@
+/* Universal Styles */
+body {
+  font-family: 'Dancing Script', cursive;
+  background-color: #f8f1e5;
+  margin: 0;
+  padding: 0;
+  color: #4e4e4e;
+  line-height: 1.8;
+}
+
+/* Container with Burnt Edges Effect */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: url('vintage-paper-texture.jpg') no-repeat center center/cover; /* Add texture or stained image here */
+}
+
+/* Letter Container */
+.letter-container {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  padding: 40px 60px;
+  max-width: 900px;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Great Vibes', cursive;
+  text-align: center;
+  position: relative;
+  z-index: 2; /* Ensure letter is on top */
+  background-image: url('burnt-edges.png'); /* Apply burnt edges image here */
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 40px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  color: #4e4e4e;
+}
+
+/* Letter Intro */
+.intro {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #b22d2d;
+}
+
+/* Main Letter */
+.letter {
+  font-size: 1.2em;
+  color: #4e4e4e;
+  line-height: 1.8;
+}
+
+/* Paragraph Breaks */
+.letter br {
+  line-height: 2em;
+}
+
+/* Emojis and Text Styling */
+.letter p {
+  font-size: 1.4em;
+  margin-bottom: 20px;
+  color: #4e4e4e;
+  font-style: italic;
+}
+
+.letter span {
+  font-size: 1.5em;
+  color: #e07b7b;
+}
+
+.letter .signature {
+  font-size: 1.8em;
+  font-family: 'Great Vibes', cursive;
+  margin-top: 40px;
+  color: #b22d2d;
+}
+
+/* Scrollable Layout */
+.letter-container {
+  max-height: 80vh;
+  overflow-y: scroll;
+  padding-right: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .letter-container {
+    padding: 20px;
+  }
+
+  .intro {
+    font-size: 1.5em;
+  }
+
+  .letter {
+    font-size: 1em;
+  }
+}
